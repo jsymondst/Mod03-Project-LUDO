@@ -1,0 +1,15 @@
+#board-container{
+    width: 500px;
+    height: 800px;
+    border-style: solid;
+}
+
+div .tile{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.odd{
+    background-color: lightgray;
+}
