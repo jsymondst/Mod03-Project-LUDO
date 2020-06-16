@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player: one
+  game: one
+  record: 1
+  payout: 1
+  player_number: 1
+
+two:
+  player: two
+  game: two
+  record: 1
+  payout: 1
+  player_number: 1

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_key: MyString
+  total_player: 1
+  stake: 1
+  is_complete: false
+  current_turn: 1
+  player1_state: MyString
+  player2_state: MyString
+  player3_state: MyString
+  player4_state: MyString
+  turn_number: 1
+
+two:
+  game_key: MyString
+  total_player: 1
+  stake: 1
+  is_complete: false
+  current_turn: 1
+  player1_state: MyString
+  player2_state: MyString
+  player3_state: MyString
+  player4_state: MyString
+  turn_number: 1
