@@ -1,15 +1,69 @@
 #board-container{
+    float: left;
     width: 500px;
-    height: 800px;
+    height: 400px;
     border-style: solid;
 }
 
 div .tile{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     float: left;
 }
 
-.odd{
+.even{
     background-color: lightgray;
 }
+
+.odd{
+    background-color: gray;
+}
+
+#dice {
+    width: 120px;
+    height: 120px;
+    border-style: solid;
+    float: left;
+}
+
+.yard1 {
+    float: left;
+    width: 100px;
+    height: 400px;
+    border-style: solid;
+}
+
+.p1.odd{
+    background-color: dodgerblue;
+}
+
+.p1.even{
+    background-color: rgb(20, 101, 182);
+}
+
+.p2.odd{
+    background-color: rgb(84, 124, 57);
+}
+
+.p2.even{
+    background-color: rgb(58, 87, 39);
+}
+
+
+
+
+
+.board4{
+    clear:left;
+    border-style: solid;
+    width: 560px;
+    height: 1500px;
+}
+
+
+.row{
+    width: 560px;
+    height: 80px;
+}
+
+
