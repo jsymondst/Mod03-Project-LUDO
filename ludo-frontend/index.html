@@ -1,26 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Ludo</title>
+    <title>Ludo</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-	<div id="player-selections"> 
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR0CKl3UbWkyC8ujm9MJlIS8ul1c3unTt2cKoFuKAYJVH5yWemn&usqp=CAU">
+    
+    <div id="player-selections">  
+    <h1> Welcome!</h1>
 
-    <h1>New Player</h1>
+    <div id="welcome-div"> 
+        <button id="log-in-button"> Log-in </button>
+        <button id="new-player-button"> Sign up</button>
+    </div>
+
+    <div id="log-in-div"> 
+    <h3>Log-in</h3>
+    <!-- <form id="log-in-form" action="#" method="?"> -->
+    <label for="existing-username">Username:</label> <br>
+      <input type="text" id="new-username" name="new-task-description" placeholder=""> <br>
+      <br>
+    <label for="existing-password">Password:</label> <br>
+      <input type="password"><br>
+      <br>
+      <input type="submit" value="Sign In" id="submit-game">
+    <!-- </form> -->
+    </div>
+
+    <div id="player-form-div"> 
+    <h3>Sign Up</h3>
 
     <form id="player-form" action="#" method="post">
-      <label for="new-user-username">Username:</label>
+      <label for="new-user-username">Username:</label> <br>
       <input type="text" id="new-username" name="new-task-description" placeholder=""> <br>
-
-      <label for="new-user-avatar">Avatar:</label>
+      <br>
+      <label for="new-user-password">Password:</label> <br>
+    <input type="password"> <br>
+      <label for="new-user-avatar">Avatar:</label> <br>
       <input type="text" id="new-avatar" name="new-task-description" placeholder=""> <br>
-
+       <br>
       <input type="submit" value="Create New Player" id="submit">
     </form>
+    </div>
+
+      <div id="game-form-div"> 
+        <h3>New Game</h3>
+    
+        <form id="game-form" action="#" method="post">
+          <label for="number-of-players">Number of players:</label>
+          <input type="range" min="2" max="4" id="first-slider" class="slider" > <br>
+          <span id="first-slider-value" class="slider-value"></span>
+          <br>
+          <label for="select-players">Select players:</label>
+          <!-- <select name="choose-players" id="choose-players">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select> -->
+          <label for="number-of-pieces">Number of pieces:</label>
+          <input type="range" min="2" max="4" id="second-slider" class="slider" > <br>
+          <span id="second-slider-value" class="slider-value"></span>
+          <br>
+          <label for="Stake">Stake:</label> <br>
+          <input type="text" id="new-avatar" name="new-task-description" placeholder=""> <br>
+          <br>
+          <input type="submit" value="Start Game" id="submit-game">
+        </form>
+       </div>
 
     </div>
 
-	<div id="game-board"></div>
+	<div id="game-board">
+        <h3>Game Board</h3>
+    </div>
 	<script type="text/javascript" src="selections.js"></script>
 </body>
 </html>
