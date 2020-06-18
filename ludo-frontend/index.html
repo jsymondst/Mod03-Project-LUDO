@@ -49,19 +49,17 @@
         <h3>New Game</h3>
     
         <form id="game-form" action="#" method="post">
-          <label for="number-of-players">Number of players:</label>
+          <label for="number-of-players" id="no-of-players">Number of players: </label>
           <input type="range" min="2" max="4" id="first-slider" class="slider" > <br>
           <span id="first-slider-value" class="slider-value"></span>
           <br>
-          <label for="select-players">Select players:</label>
+          <label for="select-players">Select players: </label>
          <select required name="choose-players" id="choose-players">
-            <!-- <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option> -->
+
           </select> 
           <br>
-          <label for="number-of-pieces">Number of pieces:</label> <br>
+          <br>
+          <label for="number-of-pieces" id="no-of-pieces">Number of pieces: </label> <br>
           <input type="range" min="2" max="4" id="second-slider" class="slider" > <br>
           <span id="second-slider-value" class="slider-value"></span>
           <br>
