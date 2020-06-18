@@ -11,11 +11,11 @@ function showOptionButtons(activePlayer){
 }
 
 function hideAllButtons(){
-    const allButtons = document.querySelectorAll(".button"){
+    const allButtons = document.querySelectorAll(".button")
         allButtons.forEach(button => {
             button.classList.add("hidden")
         });
-    }
+    
 }
 
 function showMoveButton(activePlayer){
@@ -64,3 +64,23 @@ function moveButtonHandler(){
     addMoveHandlerToTokens()
     hideAllButtons()
 }
+
+function enableAllButtons(){
+
+    const rollButtons = document.querySelectorAll(".roll.button")
+    rollButtons.forEach(button=>{
+        button.addEventListener("click", rollHandler)
+    })
+    
+    const addTokenButtons = document.querySelectorAll(".add-token.button")
+    addTokenButtons.forEach(button=>{
+        button.addEventListener("click", addTokenHandler)
+    })
+
+    const moveButtons = document.querySelectorAll(".move.button")
+    moveButtons.forEach(button=>{
+        button.addEventListener("click", moveButtonHandler)
+    })
+
+}
+

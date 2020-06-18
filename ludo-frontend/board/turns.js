@@ -3,26 +3,32 @@ function announce(string){
     actionAnnouncer.innerText = string
 }
 
-
+function activePlayer(){
+    return turnTracker.dataset.activePlayer
+}
 
 function startTurn(){
-    let activePlayer = turnTracker.dataset.activePlayer
 
     turnTracker.dataset.result = 0
+    turnTracker.innerText = `It's ${activePlayer()}'s turn`
+    announce(`Please roll`)
 
-    enableRollButton(activePlayer)
+    showRollButton(activePlayer())
 
 }
 
 function rollHandler(){
     
+    hideRollButton(activePlayer())
+    
     fancyRoll()
     .then((result)=>{
         turnTracker.dataset.result = result
+        return result
     }
     )
     .then(
-        resultHandler()
+        resultHandler
     )
        
 }
@@ -46,11 +52,11 @@ function resultHandler(){
 function passHandler(){
     
     let activePlayer = turnTracker.dataset.activePlayer
+    let result = turnTracker.dataset.result
     
-    if (result == 6){
-        announce("You rolled a 6! Roll again"){
-            enableRollButton(activePlayer)
-        }
+    if (result == 6) {
+        announce("You rolled a 6! Roll again")
+        showRollButton(activePlayer)
     } else {
         switch(activePlayer){
             case "p1":
@@ -60,6 +66,7 @@ function passHandler(){
                 turnTracker.dataset.activePlayer = "p1";
                 break;
         }
+        startTurn()
     }
 }
 
@@ -77,5 +84,33 @@ function sixHandler(activePlayer){
     }
 }
 
+
+
+
+function tokensInPlay(playerString){
+    const allTokens = document.querySelectorAll(".token");
+    let result = false;
+
+    allTokens.forEach(token => {
+        if (token.dataset.player == playerString && token.dataset.track != ""){
+            result = true;
+        }
+    })
+
+    return result
+}
+
+function tokensInYard(playerString){
+    const allTokens = document.querySelectorAll(".token");
+    let result = false;
+
+    allTokens.forEach(token => {
+        if (token.dataset.player == playerString && token.dataset.track == ""){
+            result = true;
+        }
+    })
+
+    return result
+}
 
 

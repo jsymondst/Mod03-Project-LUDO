@@ -20,9 +20,14 @@ function gameLoop(){
 function newGame(){
     
     console.log("Starting a game")
-    // showTileIDs();
-    enableRollButton();
-    enterTokenIntoPlay("p1");
+
+    // enableRollButton();
+    addToken("p1");
+    addToken("p2")
+    turnTracker.dataset.activePlayer = "p1"
+    hideAllButtons();
+    enableAllButtons();
+    startTurn();
 
     //setupTokens()
     //rollForFirstTurn()
@@ -138,18 +143,25 @@ function fancyRoll(){
             )        
         }
         setTimeout(()=>{
-            resolve(result);
+            resolve(result)
         },3100
         )
+        
     })
 
 }
 
-function enterTokenIntoPlay(playerString){
+function addToken(playerString){
     
     token = newToken(playerString)
-    token.dataset.position = 0
-    document.querySelector("#main0").appendChild(token);
+    token.dataset.track="main"
+    if (playerString == "p1"){
+        token.dataset.position = 0
+        document.querySelector("#main0").appendChild(token);
+    } else {
+        token.dataset.position = 18
+        document.querySelector("#main18").appendChild(token);
+    } 
 
 
 }
