@@ -147,6 +147,16 @@ function rollHandler(){
 }
 
 
+function tileIDs(){
+    const allTiles = document.querySelectorAll(".tile")
+
+    allTiles.forEach(tileDiv =>{
+        tileDiv.innerText = (tileDiv.id || "");
+    })
+
+}
+
+
 
 
 

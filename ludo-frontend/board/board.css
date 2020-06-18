@@ -42,11 +42,11 @@ div .tile{
 }
 
 .p2.odd{
-    background-color: rgb(84, 124, 57);
+    background-color: rgb(65, 194, 72);
 }
 
 .p2.even{
-    background-color: rgb(58, 87, 39);
+    background-color: rgb(40, 145, 45);
 }
 
 
@@ -66,4 +66,47 @@ div .tile{
     height: 80px;
 }
 
+
+.board5{
+    clear:left;
+    border-style: solid;
+    height: 560px;
+    width: 1200px;    
+}
+
+.column{
+    float: left;
+    height: 560px;
+    width:80px;
+}
+
+.inactive{
+    opacity: 60%;
+}
+
+.dice1{
+    background-image: url("./assets/dice-1.png");
+    background-size: cover;    
+}
+
+.dice2{
+    background-image: url("./assets/dice-2.png");
+    background-size: cover;    
+}
+.dice3{
+    background-image: url("./assets/dice-3.png");
+    background-size: cover;    
+}
+.dice4{
+    background-image: url("./assets/dice-4.png");
+    background-size: cover;    
+}
+.dice5{
+    background-image: url("./assets/dice-5.png");
+    background-size: cover;    
+}
+.dice6{
+    background-image: url("./assets/dice-6.png");
+    background-size: cover;    
+}
 
