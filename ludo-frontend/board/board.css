@@ -110,3 +110,6 @@ div .tile{
     background-size: cover;    
 }
 
+.hidden{
+    display: none;
+}

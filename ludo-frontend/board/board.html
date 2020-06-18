@@ -7,19 +7,9 @@
         <script defer type="text/javascript" src="board.js"></script>
     </head>
     <body>
-        <div class="page-container">
-            <h1>LUDO!</h1>
-            <div id="p1-yard" class="p1 yard1"></div>        
-            <div id="board-container"></div>            
-            <div id="p2-yard" class="p2 yard1"></div>
-            <div id="dice">
-                <h2 id="dice-result">0</h2>
-                <button id="roll">Roll!</button>
-            </div>
-        </div>
-
-        
-        
+        <h1>Ludo!</h1>
+        <h2 id="turn-tracker">It's player one's turn.</h2>
+        <h3 id="action-announcer">-</h3>        
         <div class="board5">
             <div class="column">
                 <!-- 1 -->
@@ -73,7 +63,9 @@
             </div>
             <div class="column">
                 <!-- 6 -->
-                <div class="tile blank"></div>
+                <div class="tile roll-button">
+                    <img src="./assets/roll-button.png" class="button roll" id="p1-roll-button">
+                </div>
                 <div class="tile main odd" id="main5"></div>
                 <div class="tile blank"></div>
                 <div class="tile p1 odd" id="p1ladder5"></div>
@@ -83,7 +75,9 @@
             </div>
             <div class="column">
                 <!-- 7 p1 home -->
-                <div class="tile blank"></div>
+                <div class="tile blank">
+                    <img src="./assets/add-token-button.png" class="button add-token" id="p1-add-token-button">
+                </div>
                 <div class="tile main even" id="main6"></div>
                 <div class="tile p1 odd" id="p1home2"></div>
                 <div class="tile p1 even" id="p1home1"></div>
@@ -93,13 +87,17 @@
             </div>
             <div class="column">
                 <!-- 8 middle -->
-                <div class="tile blank"></div>
+                <div class="tile blank">
+                    <img src="./assets/move-button.png" class="button move" id="p1-move-button">
+                </div>
                 <div class="tile main odd" id="main7"></div>
                 <div class="tile blank"></div>
                 <div class="tile centre"></div>
                 <div class="tile blank"></div>
                 <div class="tile main odd" id="main25"></div>
-                <div class="tile blank"></div>
+                <div class="tile blank">
+                    <img src="./assets/move-button.png" class="button move" id="p1-move-button">
+                </div>
             </div>            
             <div class="column">
                 <!-- 9 p2 home -->
@@ -109,7 +107,9 @@
                 <div class="tile p2 even" id="p2home1"></div>
                 <div class="tile p2 odd" id="p2home2"></div>
                 <div class="tile main even" id="main24"></div>
-                <div class="tile blank"></div>
+                <div class="tile blank">
+                    <img src="./assets/add-token-button.png" class="button add-token" id="p2-add-token-button">
+                </div>
             </div>
             <div class="column">
                 <!-- 10 -->
@@ -119,7 +119,9 @@
                 <div class="tile p2 odd" id="p2ladder5"></div>
                 <div class="tile blank"></div>
                 <div class="tile main odd" id="main23"></div>
-                <div class="tile blank"></div>
+                <div class="tile roll-button">
+                    <img src="./assets/roll-button.png" class="roll-button" id="p2-roll-button">
+                </div>
             </div>
             <div class="column">
                 <!-- 11 -->
