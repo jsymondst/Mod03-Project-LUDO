@@ -62,7 +62,6 @@ function newPlayer(){
 
   //----------- (POST) Create a new player -----------//
   function playerPostRequest(e) {
-       
     let configObj = {
        method: "POST",
        headers: {
@@ -71,7 +70,7 @@ function newPlayer(){
        },
        body: JSON.stringify({
            "username": e.target[0].value,
-           "avatar": e.target[1].value,
+           "avatar": e.target[2].value,
            "money": 500
        })
     }
@@ -80,9 +79,32 @@ function newPlayer(){
     .then(resp => resp.json() )
     .then(playerObject => {
         console.log(playerObject)
-        // debugger
-    //    const body = document.querySelector("#game-board")
-    //    body.appendChild(....)
+        playerCard(playerObject)
     })
     .then(() => showSection(gameFormDiv), hideSection(playerFormDiv), hideSection(welcomeDiv))
    }
+
+   //----------- Append a players card to the DOM -----------//
+  function playerCard(element){
+   const bodyElement = document.querySelector("#images");
+    
+    const divCard = document.createElement("div");
+    divCard.setAttribute("class", "card")
+
+    const playerHeader = document.createElement("h2");
+    playerHeader.innerHTML = element.username.toUpperCase()
+
+    const avatar = document.createElement("img");
+    avatar.setAttribute("src", element.avatar)
+    avatar.setAttribute("class", "player-avatar")
+
+    const luDollars = document.createElement("h4");
+    luDollars.innerHTML = "LuDollars: "
+    const value = document.createElement("span");
+    value.innerHTML = element.money
+    luDollars.appendChild(value)
+
+    divCard.append(playerHeader, avatar, luDollars)
+
+    bodyElement.appendChild(divCard)
+}
