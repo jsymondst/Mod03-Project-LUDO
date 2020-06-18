@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
 
     
     def create
-        player = player.create(player_params)
+        player = Player.create(player_params)
         render json: player, except: [ :created_at, :updated_at, :id]
     end
 
