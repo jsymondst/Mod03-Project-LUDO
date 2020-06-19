@@ -30,19 +30,35 @@ input{
     width: 70%;
 }
 
-div.card {
+div#player1-card{
     display: inline-block;
     text-align: center;
     width: 15rem;
     height: 20rem;
     padding: 1rem;
     margin: 1rem 2rem;
-    border: 3px solid #ff3a2c;
-    background-color: yellow;
+    border: 3px solid #fffb2c;
+    background-color: dodgerblue; 
+}
+
+div#player2-card{
+    display: inline-block;
+    text-align: center;
+    width: 15rem;
+    height: 20rem;
+    padding: 1rem;
+    margin: 1rem 2rem;
+    border: 3px solid #fffb2c; 
+    background-color: rgb(65, 194, 72);
+}
+
+img.money {
+    display: inline-block;
+    /* text-align: center; */
 }
 
 img.player-avatar {
     justify-self: center;
-    height: 12rem;
+    height: 10rem;
     width: 15rem;
 }

@@ -4,7 +4,7 @@ const turnTracker = document.getElementById("turn-tracker")
 
 
 
-newGame()
+startGame()
 
 function gameLoop(){
     // Active player rolls
@@ -17,7 +17,7 @@ function gameLoop(){
 
 
 
-function newGame(){
+function startGame(){
     
     console.log("Starting a game")
 
