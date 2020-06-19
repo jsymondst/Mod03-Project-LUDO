@@ -9,8 +9,10 @@ const selectPlayers = document.querySelector("#choose-players")
 document.addEventListener("DOMContentLoaded", function() {
     newPlayer();
     playersGetRequest();
+    newGame();
 });
 
+//----------- Show/ Hide a section -----------//
 function hideSection(element){
     element.classList.add("hidden");
 }
@@ -18,23 +20,28 @@ function hideSection(element){
 function showSection(element){
     element.classList.remove("hidden");
 }
+
+ //----------- Delete child elements -----------//
+ function removeChildElements(parent) {
+  while (parent.firstChild) {
+   parent.removeChild(parent.lastChild);
+  }
+ }
+
 //setTimeout(() => { hideSection(element) }, 5000);
-// hideSection(logInDiv)
-// hideSection(playerFormDiv)
-// hideSection(gameFormDiv)
+hideSection(logInDiv)
+hideSection(playerFormDiv)
+hideSection(gameFormDiv)
 
 const logInButton = document.querySelector("#log-in-button")
 const newPlayerButton = document.querySelector("#new-player-button")
 
 logInButton.addEventListener("click", function(e){
-    showSection(logInDiv)
-    hideSection(playerFormDiv)
-    hideSection(gameFormDiv)
+  showSection(logInDiv)
 })
 newPlayerButton.addEventListener("click", function(e){
-    showSection(playerFormDiv)
-    hideSection(logInDiv)
-    hideSection(gameFormDiv)
+  removeChildElements(logInDiv)
+  showSection(playerFormDiv)
 })
 
  //----------- Sliders display the number they are on -----------//
@@ -56,6 +63,7 @@ newPlayerButton.addEventListener("click", function(e){
     sliderValue.innerHTML = slider.value;
  })
 
+
 //----------- Invoke player POST request -----------//
 function newPlayer(){
   const playerForm = document.querySelector("#player-form")
@@ -63,10 +71,12 @@ function newPlayer(){
   playerForm.addEventListener("submit", (e) => {
    e.preventDefault()
    playerPostRequest(e);
+   removeChildElements(playerFormDiv)
+   showSection(gameFormDiv)
   })
 }
 
-  //----------- (POST) Create a new player -----------//
+//----------- (POST) Create a new player -----------//
   function playerPostRequest(e) {
     let configObj = {
        method: "POST",
@@ -80,15 +90,11 @@ function newPlayer(){
            "money": 500
        })
     }
-     
+    
     return fetch("http://localhost:3000/players", configObj)
     .then(resp => resp.json() )
-    .then(playerObject => {
-        playerCard(playerObject)
-    })
-    .then(() => showSection(gameFormDiv), hideSection(playerFormDiv), hideSection(welcomeDiv))
-    // .catch(obj => console.log(obj.message) )
-   }
+    .then(playerObject => { playerCard(playerObject) })
+  }
 
    //----------- Append a players card to the DOM -----------//
   function playerCard(element){
@@ -97,7 +103,7 @@ function newPlayer(){
     const divCard = document.createElement("div");
     divCard.setAttribute("class", "card")
 
-    const playerHeader = document.createElement("h2");
+    const playerHeader = document.createElement("h3");
     playerHeader.innerHTML = element.username.toUpperCase()
 
     const avatar = document.createElement("img");
@@ -112,7 +118,10 @@ function newPlayer(){
     value.innerHTML = element.money
     luDollars.appendChild(value)
 
-    divCard.append(playerHeader, avatar, luDollars)
+    const playerNumber = document.createElement("h4");
+    playerNumber.innerHTML = "Player 1"
+
+    divCard.append(playerHeader, avatar, luDollars, playerNumber)
 
     bodyElement.appendChild(divCard)
 }
@@ -135,3 +144,51 @@ function newPlayer(){
     optionTag.innerHTML = playerObj.username
     selectPlayers.appendChild(optionTag)
   }
+
+  //----------- Invoke game POST request -----------//
+function newGame(){
+    const gameForm = document.querySelector("#game-form")
+  
+    gameForm.addEventListener("submit", (e) => {
+     e.preventDefault()
+     gamePostRequest(e);
+     hideSection(gameFormDiv)
+    })
+  }
+  
+    //----------- (POST) Create a new Game -----------//
+    function gamePostRequest(e) {
+      let configObj = {
+         method: "POST",
+         headers: {
+             "Content-Type": "application/json",
+             "Accept": "application/json"
+         },
+         body: JSON.stringify({
+            //  "username": e.target[0].value,
+            //  "avatar": e.target[2].value,
+            //  "money": 500
+         })
+      }
+       
+      return fetch("http://localhost:3000/games", configObj)
+      .then(resp => resp.json() )
+      .then(gameObject => {
+        //   playerCard(gameObject)
+      })
+    //   .then(() => renderBoard();)
+      // .catch(obj => console.log(obj.message) )
+     }
+
+
+//----------- Log-in form -----------//
+// function authentication(){
+    // const logInForm = document.querySelector("#log-in-form")
+  
+    // logInForm.addEventListener("submit", (e) => {
+    //  e.preventDefault()
+    //  showSection(gameFormDiv)
+    //  hideSection(logInDiv)
+   //log in request / authentication
+    // })
+//   }
