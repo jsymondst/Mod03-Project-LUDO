@@ -29,9 +29,9 @@ function showSection(element){
  }
 
 //setTimeout(() => { hideSection(element) }, 5000);
-hideSection(logInDiv)
-hideSection(playerFormDiv)
-hideSection(gameFormDiv)
+// hideSection(logInDiv)
+// hideSection(playerFormDiv)
+// hideSection(gameFormDiv)
 
 const logInButton = document.querySelector("#log-in-button")
 const newPlayerButton = document.querySelector("#new-player-button")
@@ -120,10 +120,11 @@ function newPlayer(){
 
     const playerNumber = document.createElement("h4");
     playerNumber.innerHTML = "Player 1"
-
+    
     divCard.append(playerHeader, avatar, luDollars, playerNumber)
-
+    
     bodyElement.appendChild(divCard)
+    // return element;
 }
 
    //----------- Select players drop-down menu -----------//
@@ -144,6 +145,7 @@ function newPlayer(){
     optionTag.innerHTML = playerObj.username
     selectPlayers.appendChild(optionTag)
   }
+  // debugger
 
   //----------- Invoke game POST request -----------//
 function newGame(){
@@ -158,6 +160,8 @@ function newGame(){
   
     //----------- (POST) Create a new Game -----------//
     function gamePostRequest(e) {
+      // debugger
+      // const randomWords =  
       let configObj = {
          method: "POST",
          headers: {
@@ -165,20 +169,47 @@ function newGame(){
              "Accept": "application/json"
          },
          body: JSON.stringify({
-            //  "username": e.target[0].value,
-            //  "avatar": e.target[2].value,
-            //  "money": 500
+            //  "game_key": 
+            //  "player_count": e.target[0].value,
+            //  "stake": e.target[3].value,
+            //  "is_complete": "false"
          })
       }
        
       return fetch("http://localhost:3000/games", configObj)
       .then(resp => resp.json() )
       .then(gameObject => {
-        //   playerCard(gameObject)
+        console.log(gameObject)
+          playerCard(gameObject)
+        const numberOfPlayers = e.target[0].value
+        const competitor = e.target[1].value
+        const numberOfPieces = e.target[2].value
+        const stakeChosen = e.target[3].value
+        playerCard(competitor)
+        // collectStakes(player1, competitor, stakeChosen) -- select player one? the person logged in
       })
     //   .then(() => renderBoard();)
-      // .catch(obj => console.log(obj.message) )
+
      }
+
+//----------- Game Pot for 2 players-----------//
+function collectStakes(player1, player2, stake){
+  // let gamePot = 0
+  // player1.money -= stake
+  // player2.money -= stake
+  // gamePot = stake * 2
+}
+
+//----------- End Game -----------//
+function endGame(){
+  //Give the winner all the money in the pot 
+  //Show the players pot with a crown OR number 1
+  //Update game records
+  //Reset the game
+}
+
+
+
 
 
 //----------- Log-in form -----------//
