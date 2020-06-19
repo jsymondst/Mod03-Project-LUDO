@@ -93,15 +93,18 @@ function newPlayer(){
     
     return fetch("http://localhost:3000/players", configObj)
     .then(resp => resp.json() )
-    .then(playerObject => { playerCard(playerObject) })
+    .then(playerObject => { playerCard(playerObject,1) })
   }
 
    //----------- Append a players card to the DOM -----------//
-  function playerCard(element){
+  function playerCard(element,playerNumber){
    const bodyElement = document.querySelector("#images");
     
-    const divCard = document.createElement("div");
-    divCard.setAttribute("class", "card")
+   const divCard = document.createElement("div");
+   divCard.setAttribute("class", "card")
+   divCard.id = `player${playerNumber}-card`
+   divCard.dataset.playerId = element.id
+   
 
     const playerHeader = document.createElement("h3");
     playerHeader.innerHTML = element.username.toUpperCase()
@@ -118,11 +121,11 @@ function newPlayer(){
     value.innerHTML = element.money
     luDollars.appendChild(value)
 
-    const playerNumber = document.createElement("h4");
-    playerNumber.innerHTML = "Player 1"
+    const playerNumberH2 = document.createElement("h4");
+    playerNumberH2.innerHTML = "Player 1"
     
-    divCard.append(playerHeader, avatar, luDollars, playerNumber)
-    
+
+    divCard.append(playerHeader, avatar, luDollars, playerNumberH2)
     bodyElement.appendChild(divCard)
     // return element;
 }
@@ -154,14 +157,18 @@ function newGame(){
     gameForm.addEventListener("submit", (e) => {
      e.preventDefault()
      gamePostRequest(e);
-     hideSection(gameFormDiv)
+    //  hideSection(gameFormDiv)
     })
   }
   
     //----------- (POST) Create a new Game -----------//
     function gamePostRequest(e) {
       // debugger
-      // const randomWords =  
+      // const randomWords = 
+      
+      const player1Card = document.querySelector("#player1-card")
+      const player1Id = player1Card.dataset.playerId
+      
       let configObj = {
          method: "POST",
          headers: {
@@ -169,23 +176,24 @@ function newGame(){
              "Accept": "application/json"
          },
          body: JSON.stringify({
-            //  "game_key": 
-            //  "player_count": e.target[0].value,
-            //  "stake": e.target[3].value,
-            //  "is_complete": "false"
+             player_1_id: player1Id,
+             player_2_id: e.target[1].value,
+             player_count: e.target[0].value,
+             stake: e.target[3].value,
          })
       }
+
        
       return fetch("http://localhost:3000/games", configObj)
       .then(resp => resp.json() )
       .then(gameObject => {
         console.log(gameObject)
-          playerCard(gameObject)
-        const numberOfPlayers = e.target[0].value
-        const competitor = e.target[1].value
-        const numberOfPieces = e.target[2].value
-        const stakeChosen = e.target[3].value
-        playerCard(competitor)
+          // playerCard(gameObject)
+        // const numberOfPlayers = e.target[0].value
+        // const competitorId = e.target[1].value
+        // const numberOfPieces = e.target[2].value
+        // const stakeChosen = e.target[3].value
+        playerCard(gameObject.player_2_info)
         // collectStakes(player1, competitor, stakeChosen) -- select player one? the person logged in
       })
     //   .then(() => renderBoard();)
