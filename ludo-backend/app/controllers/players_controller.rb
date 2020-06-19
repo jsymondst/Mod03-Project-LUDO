@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
     
     def index
         players = Player.all
-        render json: players, except: [ :created_at, :updated_at, :id]
+        render json: players, except: [ :created_at, :updated_at]
     end
 
     def show
@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
     
     def create
         player = Player.create(player_params)
-        render json: player, except: [ :created_at, :updated_at, :id]
+        render json: player, except: [ :created_at, :updated_at]
     end
 
 
