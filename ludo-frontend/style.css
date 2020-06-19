@@ -9,9 +9,14 @@
 
 #player-selections {
     background-color: #ff3a2c;
-    position: absolute;
+    float:left;
+    clear: left;
     left: 0px;
     width: 30%;
+  }
+
+  .top {
+      width:100%
   }
 
 input{
